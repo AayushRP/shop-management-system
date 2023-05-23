@@ -42,7 +42,7 @@ table.dataTable thead .sorting_desc {
     background-image: none;
 }
 
-.btn-group-xs > .btn,
+.btn-group-xs>.btn,
 .btn-xs {
     padding: 1px 5px;
     font-size: 12px;
