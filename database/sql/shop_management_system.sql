@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 23, 2023 at 05:25 AM
+-- Generation Time: May 23, 2023 at 10:38 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -53,18 +53,19 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_100000_create_password_resets_table', 1),
-(2, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
-(3, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
-(4, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
-(5, '2016_06_01_000004_create_oauth_clients_table', 1),
-(6, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
-(7, '2019_04_15_191331679173_create_1555355612601_permissions_table', 1),
-(8, '2019_04_15_191331731390_create_1555355612581_roles_table', 1),
-(9, '2019_04_15_191331779537_create_1555355612782_users_table', 1),
-(10, '2019_04_15_191332603432_create_1555355612603_permission_role_pivot_table', 1),
-(11, '2019_04_15_191332791021_create_1555355612790_role_user_pivot_table', 1),
-(12, '2019_08_19_000000_create_failed_jobs_table', 1);
+(49, '2014_10_12_100000_create_password_resets_table', 1),
+(50, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
+(51, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
+(52, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
+(53, '2016_06_01_000004_create_oauth_clients_table', 1),
+(54, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
+(55, '2019_04_15_191331679173_create_1555355612601_permissions_table', 1),
+(56, '2019_04_15_191331731390_create_1555355612581_roles_table', 1),
+(57, '2019_04_15_191331779537_create_1555355612782_users_table', 1),
+(58, '2019_04_15_191332603432_create_1555355612603_permission_role_pivot_table', 1),
+(59, '2019_04_15_191332791021_create_1555355612790_role_user_pivot_table', 1),
+(60, '2019_08_19_000000_create_failed_jobs_table', 1),
+(61, '2023_05_23_064526_create_site_configurations_table', 2);
 
 -- --------------------------------------------------------
 
@@ -192,11 +193,8 @@ INSERT INTO `permissions` (`id`, `title`, `created_at`, `updated_at`, `deleted_a
 (14, 'user_show', '2019-04-15 13:29:42', '2019-04-15 13:29:42', NULL),
 (15, 'user_delete', '2019-04-15 13:29:42', '2019-04-15 13:29:42', NULL),
 (16, 'user_access', '2019-04-15 13:29:42', '2019-04-15 13:29:42', NULL),
-(17, 'product_create', '2019-04-15 13:29:42', '2019-04-15 13:29:42', NULL),
-(18, 'product_edit', '2019-04-15 13:29:42', '2019-04-15 13:29:42', NULL),
-(19, 'product_show', '2019-04-15 13:29:42', '2019-04-15 13:29:42', NULL),
-(20, 'product_delete', '2019-04-15 13:29:42', '2019-04-15 13:29:42', NULL),
-(21, 'product_access', '2019-04-15 13:29:42', '2019-04-15 13:29:42', NULL);
+(17, 'master_data_access', '2023-05-23 05:52:00', '2023-05-23 05:52:00', NULL),
+(18, 'site_configuration_access', '2023-05-23 05:52:00', '2023-05-23 05:52:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -231,15 +229,7 @@ INSERT INTO `permission_role` (`role_id`, `permission_id`) VALUES
 (1, 15),
 (1, 16),
 (1, 17),
-(1, 18),
-(1, 19),
-(1, 20),
-(1, 21),
-(2, 17),
-(2, 18),
-(2, 19),
-(2, 20),
-(2, 21);
+(1, 18);
 
 -- --------------------------------------------------------
 
@@ -279,7 +269,27 @@ CREATE TABLE `role_user` (
 --
 
 INSERT INTO `role_user` (`user_id`, `role_id`) VALUES
-(1, 1);
+(1, 1),
+(1, 2),
+(2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_configurations`
+--
+
+CREATE TABLE `site_configurations` (
+  `id` bigint UNSIGNED NOT NULL,
+  `site_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pan_number` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -304,7 +314,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$imU.Hdz7VauIT3LIMCMbsOXvaaTQg6luVqkhfkBcsUd.SJW2XSRKO', NULL, '2019-04-15 13:28:32', '2019-04-15 13:28:32', NULL);
+(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$imU.Hdz7VauIT3LIMCMbsOXvaaTQg6luVqkhfkBcsUd.SJW2XSRKO', NULL, '2019-04-15 13:28:32', '2019-04-15 13:28:32', NULL),
+(2, 'User', 'user@user.com', NULL, '$2y$10$imU.Hdz7VauIT3LIMCMbsOXvaaTQg6luVqkhfkBcsUd.SJW2XSRKO', NULL, '2019-04-15 13:28:32', '2019-04-15 13:28:32', NULL);
 
 --
 -- Indexes for dumped tables
@@ -389,6 +400,12 @@ ALTER TABLE `role_user`
   ADD KEY `role_user_role_id_foreign` (`role_id`);
 
 --
+-- Indexes for table `site_configurations`
+--
+ALTER TABLE `site_configurations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -408,7 +425,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -426,7 +443,7 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -435,10 +452,16 @@ ALTER TABLE `roles`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `site_configurations`
+--
+ALTER TABLE `site_configurations`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

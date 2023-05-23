@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\MicrosoftsController;
-use App\Http\Controllers\Admin\ProductsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +23,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
 
     Route::resource('users', 'UsersController');
+
+    Route::resource('site-configurations', 'SiteConfigurationsController');
 
 });

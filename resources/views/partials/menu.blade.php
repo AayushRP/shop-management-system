@@ -12,7 +12,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{ route("admin.home") }}" class="nav-link">
+                    <a href="{{ route('admin.home') }}" class="nav-link">
                         <p>
                             <i class="fas fa-tachometer-alt">
 
@@ -21,8 +21,39 @@
                         </p>
                     </a>
                 </li>
+                @can('master_data_access')
+                    <li class="nav-item has-treeview {{ request()->is('admin/site-configurations*') ? 'menu-open' : '' }}">
+                        <a class="nav-link nav-dropdown-toggle">
+                            <i class="fas fa-users">
+
+                            </i>
+                            <p>
+                                <span>Master Data</span>
+                                {{-- <span>{{ trans('global.userManagement.title') }}</span> --}}
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('site_configuration_access')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.site-configurations.index') }}"
+                                        class="nav-link {{ request()->is('admin/site-configurations') || request()->is('admin/site-configurations/*') ? 'active' : '' }}">
+                                        <i class="fas fa-unlock-alt">
+
+                                        </i>
+                                        <p>
+                                            <span>Site Configurations</span>
+                                            {{-- <span>{{ trans('global.permission.title') }}</span> --}}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan                       
+                        </ul>
+                    </li>
+                @endcan
                 @can('user_management_access')
-                    <li class="nav-item has-treeview {{ request()->is('admin/permissions*') ? 'menu-open' : '' }} {{ request()->is('admin/roles*') ? 'menu-open' : '' }} {{ request()->is('admin/users*') ? 'menu-open' : '' }}">
+                    <li
+                        class="nav-item has-treeview {{ request()->is('admin/permissions*') ? 'menu-open' : '' }} {{ request()->is('admin/roles*') ? 'menu-open' : '' }} {{ request()->is('admin/users*') ? 'menu-open' : '' }}">
                         <a class="nav-link nav-dropdown-toggle">
                             <i class="fas fa-users">
 
@@ -35,7 +66,8 @@
                         <ul class="nav nav-treeview">
                             @can('permission_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.permissions.index') }}"
+                                        class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
                                         <i class="fas fa-unlock-alt">
 
                                         </i>
@@ -47,7 +79,8 @@
                             @endcan
                             @can('role_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.roles.index') }}"
+                                        class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
                                         <i class="fas fa-briefcase">
 
                                         </i>
@@ -59,7 +92,8 @@
                             @endcan
                             @can('user_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.users.index') }}"
+                                        class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
                                         <i class="fas fa-user">
 
                                         </i>
@@ -73,7 +107,8 @@
                     </li>
                 @endcan
                 <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
+                    <a href="#" class="nav-link"
+                        onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
                             <i class="fas fa-sign-out-alt">
 
