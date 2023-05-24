@@ -115,7 +115,61 @@ class PermissionsTableSeeder extends Seeder
                 'title'      => 'site_configuration_access',
                 'created_at' => '2023-05-23 11:37:00',
                 'updated_at' => '2023-05-23 11:37:00',
-            ],  
+            ],
+            [
+                'id'         => '19',
+                'title'      => 'site_configuration_create',
+                'created_at' => '2023-05-23 11:37:00',
+                'updated_at' => '2023-05-23 11:37:00',
+            ],
+            [
+                'id'         => '20',
+                'title'      => 'site_configuration_edit',
+                'created_at' => '2023-05-23 11:37:00',
+                'updated_at' => '2023-05-23 11:37:00',
+            ],
+            [
+                'id'         => '21',
+                'title'      => 'site_configuration_show',
+                'created_at' => '2023-05-23 11:37:00',
+                'updated_at' => '2023-05-23 11:37:00',
+            ],
+            [
+                'id'         => '22',
+                'title'      => 'site_configuration_delete',
+                'created_at' => '2023-05-23 11:37:00',
+                'updated_at' => '2023-05-23 11:37:00',
+            ],
+            [
+                'id'         => '23',
+                'title'      => 'item_category_access',
+                'created_at' => '2023-05-23 11:37:00',
+                'updated_at' => '2023-05-23 11:37:00',
+            ],
+            [
+                'id'         => '24',
+                'title'      => 'item_category_create',
+                'created_at' => '2023-05-23 11:37:00',
+                'updated_at' => '2023-05-23 11:37:00',
+            ],              
+            [
+                'id'         => '25',
+                'title'      => 'item_category_edit',
+                'created_at' => '2023-05-23 11:37:00',
+                'updated_at' => '2023-05-23 11:37:00',
+            ],              
+            [
+                'id'         => '26',
+                'title'      => 'item_category_show',
+                'created_at' => '2023-05-23 11:37:00',
+                'updated_at' => '2023-05-23 11:37:00',
+            ],              
+            [
+                'id'         => '27',
+                'title'      => 'item_category_delete',
+                'created_at' => '2023-05-23 11:37:00',
+                'updated_at' => '2023-05-23 11:37:00',
+            ],
         ];
 
         Permission::insert($permissions);

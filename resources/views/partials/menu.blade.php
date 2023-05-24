@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 @can('master_data_access')
-                    <li class="nav-item has-treeview {{ request()->is('admin/site-configurations*') ? 'menu-open' : '' }}">
+                    <li class="nav-item has-treeview {{ request()->is('admin/site-configurations*') || request()->is('admin/item-categories*') ? 'menu-open' : '' }}">
                         <a class="nav-link nav-dropdown-toggle">
                             <i class="fas fa-users">
 
@@ -47,7 +47,21 @@
                                         </p>
                                     </a>
                                 </li>
-                            @endcan                       
+                            @endcan
+                            @can('item_category_access')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.item-categories.index') }}"
+                                        class="nav-link {{ request()->is('admin/item-categories') || request()->is('admin/item-categories/*') ? 'active' : '' }}">
+                                        <i class="fas fa-unlock-alt">
+
+                                        </i>
+                                        <p>
+                                            <span>Item Categories</span>
+                                            {{-- <span>{{ trans('global.permission.title') }}</span> --}}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan  
                         </ul>
                     </li>
                 @endcan

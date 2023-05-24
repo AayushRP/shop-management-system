@@ -49,3 +49,8 @@ table.dataTable thead .sorting_desc {
     line-height: 1.5;
     border-radius: 3px;
 }
+
+.crud-item-list{
+    font-size: 20px;
+    font-weight: bolder;
+}

@@ -26,4 +26,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('site-configurations', 'SiteConfigurationsController');
 
+    Route::resource('item-categories', 'ItemCategoriesController');
+
 });
