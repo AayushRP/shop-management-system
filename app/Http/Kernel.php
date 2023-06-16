@@ -32,13 +32,15 @@ class Kernel extends HttpKernel
     ];
 
     protected $routeMiddleware = [
+        'auth'          => \App\Http\Middleware\Authenticate::class,
         'can'           => \Illuminate\Auth\Middleware\Authorize::class,
-        'auth'          => \Illuminate\Auth\Middleware\Authenticate::class,
+        // 'auth'          => \Illuminate\Auth\Middleware\Authenticate::class,
         'guest'         => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed'        => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'bindings'      => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'auth.basic'    => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'user-access'   => \App\Http\Middleware\MultiAuthUser::class,
     ];
 }

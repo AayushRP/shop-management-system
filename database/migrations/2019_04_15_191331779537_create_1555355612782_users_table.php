@@ -14,6 +14,7 @@ class Create1555355612782UsersTable extends Migration
             $table->string('email');
             $table->datetime('email_verified_at')->nullable();
             $table->string('password');
+            $table->tinyInteger('type')->default(0); // Users: 0:admin, 1:visitor, 2:exhibitor
             $table->string('remember_token')->nullable();
             $table->timestamps();
             $table->softDeletes();
